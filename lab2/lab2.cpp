@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include <iostream>
+
 int main()
 {
    //создать целочисленные переменные а=300
@@ -35,7 +36,7 @@ std::cout << "bool\t" << sizeof(bool)<<"\t" << "0\t" << "1\n" << std::endl;
 std::cout << "int\t" << sizeof(int) <<"\t" << INT_MIN  << "\t" << INT_MAX<< "\t\n" <<std::endl;
 std::cout << "short\t" << sizeof(short) << "\t" << SHRT_MIN << "\t" << SHRT_MAX << "\t\n" << std::endl;
 std::cout << "long\t" << sizeof(long) << "\t" << LONG_MIN << "\t" << LONG_MAX << "\t\n" << std::endl;
-std::cout << "double\t" << sizeof(double) << "\t" <<DBL_MIN << "\t" << DBL_MAX << "\t\n" << std::endl;
+std::cout << "double\t" << sizeof(double) << "\t" << "2,2250738585072014e–308" << "\t" << "1,7976931348623158e+308" << "\t\n" << std::endl;
 
 return 0;
 }
