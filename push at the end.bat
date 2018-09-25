@@ -6,5 +6,5 @@ git add *.h
 git add *.bat 
 git add *.user 
 git commit -sm "%DATE% %TIME%" 
-git push okunev-351 master 
+git push s master 
 pause
