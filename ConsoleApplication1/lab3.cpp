@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include <iostream>
+using namespace std;
+
 /*ЛАБОРАТОРНАЯ РАБОТА
 МАССИВЫ*/
 
@@ -85,12 +87,12 @@ int main()
 	std::cout << "\n";
 	int t;
 	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 4; j++) {
-			if (d[j] > d[j + 1]) {
-				t = d[j];
-				d[j] = d[j + 1];
-				d[j + 1] = t;
-			}
+		for (int j = 1; j < 5; j++) 
+		{ 
+		   if (d[j-1] > d[j]) 
+		   {
+		     swapEl(d, j);
+           }
 		}
 	}
 	for (int i = 0; i < 5; i++) {
@@ -117,34 +119,15 @@ int main()
 	}
 	std::cout << "\n\n";
 
-	//применение шифра цезаря со сдвигом вправо на 3 для массива v
-	int v[9]{ 1, 2, 3, 4, 5, 6, 7, 8, 9 }; //исходный массив
-	for (int x = 0; x < 9; x++)
-	{
-		std::cout << v[x] << " "; //вывод исходного массива
-	}
-	std::cout << "\n";
-
-	int *ptr_v = v;
-	int v1[9]{{0}};  //шифрованный массив
-	int z = 0;
-	for (int x = 0; x < 9; x++) //шифрование
-	{
-		if (x < 6)
-		{
-			v1[x] = *(ptr_v + x + 3); 
-		}
-		else
-		{
-			v1[x] = *(ptr_v + z);
-			z++;
-		}
-	}
-		
-	for (int x = 0; x < 9; x++)
-	{
-		std::cout << v1[x] << " "; //вывод массива после шифрования
-	}
-		
-	}
+	
+	//применение шифра цезаря для строчных латинских букв со сдвигом вправо на 3 
+	char string[6]; // вводимая строка из 5 букв
+	gets_s(string);
+  for (int i = 0; i < 5; i++)
+  {
+	if (string[i] < 120 && string[i]!=32) string[i] = string[i] + 3;  //шифрование
+	else {if (string[i] >= 120) string[i] = string[i] - 23;}
+  }
+	std::cout << string;
+}
 

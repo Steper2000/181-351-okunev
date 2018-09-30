@@ -3,7 +3,15 @@
 
 #include "stdafx.h"
 #include <iostream>
-
+using namespace std;
+void shifr_cez(char *arr)
+{
+	for (int i = 0; i < 5; i++)
+	{
+		if (arr[i] < 120 && arr[i] != 32) { arr[i] = arr[i] + 3; } //шифрование
+		else { if (arr[i] >= 120) { arr[i] = arr[i] - 23; } }
+	}
+}
 /*void *input_array(int *arr)
 {
 	int arr[10] = { 0 };
@@ -24,7 +32,6 @@ int *print_array()
 	return arr;
 }
 */
-int func(int num1, int num2);
 
 int main()
 {
@@ -32,35 +39,17 @@ int main()
 	{
 	код
 	}
-	else (условие)
+	else 
 	{
 	код
 	}
 	пример:
 	if (a>b){...;
 	*/
-
-   
-	/*int iter = 0;
-	while (true)
-	{
-		std::cout << iter;
-		iter++;
-		if (iter = 10);
-	}*/
-
 	
-	//input_array;
-	//print_array;
-	
-	int num1 = 1, num2 = 2, res = 0;
-	res = func(num1, num2);
-	std::cout << res << " " << num1 << " " << num2;
-	return 0;
-}
-
-int func(int num1, int num2)
-{
-	num1 += 10;
-	return num1 + num2;
+	//применение шифра цезаря для строчных латинских букв со сдвигом вправо на 3 
+	char string[6]; // вводимая строка из 5 букв
+	cin >> string;
+	shifr_cez(string);
+	cout << string;
 }
