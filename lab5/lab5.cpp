@@ -1,4 +1,4 @@
-// lab5.cpp: операторы переходов и циклов.
+// lab5.cpp: шифр цезаря и классы.
 //
 
 #include "stdafx.h"
@@ -12,44 +12,87 @@ void shifr_cez(char *arr)
 		else { if (arr[i] >= 120) { arr[i] = arr[i] - 23; } }
 	}
 }
-/*void *input_array(int *arr)
-{
-	int arr[10] = { 0 };
-	for (int i = 0; i < 10; i++)
-	{
-		std::cin >> arr[i];
-	}
-	//return arr;
-}
 
-int *print_array()
+class wehicle
 {
-	int arr[10] = { 0 };
-	for (int i = 0; i < 10; i++)
+private:
+public:
+	double speed;
+	char regnumber[6]{ 0 };
+	unsigned char capacity;
+	bool check_regnumber()
 	{
-		std::cout << arr[i];
+		const char *true_number = "K370AO";
+		bool result = true;
 	}
-	return arr;
-}
-*/
+};
 
-int main()
+class user_data
 {
-	/*if (условие)
+private:
+	char first_name[255];
+	char second_name[255];
+	char str_passpot[10];
+	char str_birthday[10];
+	public:
+		/*bool set_first_name(char p_first_name[255])
+		{
+			for(int i=0; i<255; i++)
+			{
+				if (first_name[i] < 128 || first_name[i] <176 || first_name[i] > 241 )
+				{
+					return false;
+				}
+			}
+
+			
+		*/
+		
+		bool set_birthday(char p_birthday[10])
 	{
-	код
+			for (int j = 0; j<10; j++)
+			{
+				if (str_birthday[j]>45 && str_birthday[j] != 47 && str_birthday[j]<58) 
+				return true;
+				else return false;
+			}
+			
 	}
-	else 
-	{
-	код
-	}
-	пример:
-	if (a>b){...;
-	*/
 	
+		bool set_birthday(char p_passport[10])
+	{
+		return false;
+	};
+};
+	
+	
+	int main()
+{
+	wehicle car;
+	car.speed = 123;
+
+
+
 	//применение шифра цезаря для строчных латинских букв со сдвигом вправо на 3 
 	char string[6]; // вводимая строка из 5 букв
 	cin >> string;
 	shifr_cez(string);
 	cout << string;
+/*Классы
+
+
+
+
+свойство(property)-пременная в сотаве класса
+метод(method)-функ в составе класса
+инкапсуляция-фактически, об
+Наследие
+полиморфизм
+
+
+*/
+
+
 }
+
+
