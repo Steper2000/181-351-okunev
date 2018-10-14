@@ -10,12 +10,10 @@ using namespace std;
 но указывать не обязательно
  
                 указано в наследовании
- класс         public  private  protected
- private
- protected
- public
-
-
+ класс        public      private     protected
+ private         n o t  i n h e r t e d
+ protected    protected   private     protected
+ public       public      private     protected
 
  Чтобы при запуске нового дочернего метода выполнялся также родительский
  необходимо это указать
@@ -38,34 +36,14 @@ class matrix
 {
 private: 
 	int matr[10][10];
-	int rows = 10;
-	int columns = 10;
+	int rows, columns;
+	int res[10][10];
 public:
-
+	matrix();
+	~matrix();
 	
-	void summMatrix(int *matr2)
-	{
-		for (int i = 0; i <rows; i++) 
-		{
-		 for (int j = 0; j < columns; j++)
-		 {
-			 matr2[i][j] = matr[i][j] + matr2[i][j];
-		 }
-		}
-	}
-
-	void multMatrix(int *matr2)
-	{
-		for (int i = 0; i <rows; i++)
-		{
-			for (int j = 0; j < columns; j++)
-			{
-				matr2[i][j] = matr[i][j] + matr2[i][j];
-			}
-		}
-	}
-
-	
+	bool summMatrix(matrix matr2);
+    bool multMatrix(matrix matr2);
 	
 	int getElem(int row, int col)
 	{
@@ -77,29 +55,44 @@ public:
 		return -1;
 	}
 
-	bool transp();
-
+	int getRows(){ return rows; }
+	int getColumns(){ return columns; }
+	
 	bool input();
-	void print()
+	void transp();
+	
+	void printM()
 	{
 		for (int i = 0; i < rows; i++)
 		{
 			for (int j = 0; j < columns; j++)
 			{
-				cout << matr[i][j] << "\t";
+				cout << matr[i][j] <<"\t";
 			}
 			cout << endl;
 		}
 	};
+
+	void printR()
+	{
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < columns; j++)
+			{
+				cout << res[i][j] <<"\t";
+			}
+			cout << endl;
+		}
+	};
+
 };
 
 
 int main()
 {
-	int m1;
-	
-	
-	
+	matrix matrA, matrB;
+	matrA.input();
+	matrA.printM();
 	
 	
 	/*int a = -15;
@@ -123,34 +116,78 @@ int main()
 
 return 0;
 }
+matrix::matrix(){}
+matrix::~matrix(){}
 
-bool matrix::transp()
+bool matrix::summMatrix(matrix matr2)
 {
-	int t;
-	for (int i = 0; i < rows; i++)
+	if (rows == matr2.getRows() && columns == matr2.getColumns())
 	{
-		for (int j = 0; j < columns; j++)
+		for (int i = 0; i < rows; i++)
 		{
-			t = matr[i][j];
-			matr[i][j] = matr[j][i];
-			matr[j][i] = t;
+			for (int j = 0; j < columns; j++)
+			{
+				matr[i][j] += matr2.getElem(i, j);
+			}
 		}
-
-    }
+		return true;
+		printM();
+	}
+	else { return false; }
 }
+
+void matrix::transp()
+{
+	for (int i = 0; i < columns; i++)
+	{
+		for (int j = 0; j < rows; j++)
+		{
+			 
+			cout << matr[j][i] <<"  ";
+		}
+		cout << endl;
+	}
+}
+
+bool matrix::multMatrix(matrix matr2)
+{
+	if (columns == matr2.getRows())
+	{
+		for (int i = 0; i < matr2.getRows(); i++)
+		{
+			for (int j = 0; j < columns; j++)
+			{
+				int sum = 0;
+				for (int k = 0; k < rows; k++) {
+					sum += matr[i][k] * matr2.getElem(k, j);
+				}
+				res[i][j] = sum;
+			}
+		}
+		printR();
+		return true;
+	}
+    else { return false; }
+}
+
+
 
 bool matrix::input()
 {
+	cout << "rows=";
 	cin >> rows;
-	if(rows<1 && rows>10){return false}
+	if (rows < 1 || rows>10) { return false; }
+	cout << "columns=";
 	cin >> columns;
-	if (columns<1 && columns>10) { return false }
+	if (columns < 1 || columns>10) { return false; }
 	for(int i=0; i<rows; i++)
 	{
 		for(int j = 0; j<columns; j++)
 		{
-		 cin>>matr[i][j]
+			cout << "matr["<<i<<"]["<<j<<"]=";
+			cin >> matr[i][j];
 		}
+		cout << endl;
 	}
 	return true;
 }
