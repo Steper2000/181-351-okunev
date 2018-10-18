@@ -1,4 +1,4 @@
-// lab6 Настледование
+// lab6 Настледование, матрицы и векторы.
 //
 
 #include "stdafx.h"
@@ -45,16 +45,7 @@ public:
 	bool summMatrix(matrix matr2);
     bool multMatrix(matrix matr2);
 	
-	int getElem(int row, int col)
-	{
-		if (row<rows && col<columns && row>-1 && col>-1)
-		{
-			return matr[row][col];
-		}
-		cout << "error";
-		return -1;
-	}
-
+	int getElem(int row, int col);
 	int getRows(){ return rows; }
 	int getColumns(){ return columns; }
 	
@@ -86,14 +77,40 @@ public:
 	};
 
 };
-
+class vector
+{
+private:
+	int vec[10];
+	int n;
+public: 
+	int getN() { return n; }
+	int getEl(int n);
+	bool enter();
+	void kvec(int k)
+	{
+	 for (int i=0; i<n; i++)
+	 {
+		 vec[i] *= k;
+		 cout << vec[i]<<' ';
+	 }
+	};
+	bool multvec(vector vec2);
+};
 
 int main()
 {
 	matrix matrA, matrB;
+	vector vecA, vecB;
 	matrA.input();
-	matrA.printM();
-	
+	matrB.input();
+	//matrA.printM(); 
+	//matrA.transp(); 
+	matrA.summMatrix(matrB);
+					
+					
+    
+	//vecA.enter();
+	//vecA.kvec(5);
 	
 	/*int a = -15;
 	double d = 1000.5e+03;//=1000.5 *10^3 = 1000.5 * pow(10,3) = 1000500
@@ -170,7 +187,18 @@ bool matrix::multMatrix(matrix matr2)
     else { return false; }
 }
 
-
+int matrix::getElem(int row, int col)
+{
+	if (row<rows && col<columns && row>-1 && col>-1)
+	{
+		return matr[row][col];
+	}
+	else
+	{
+		cout << "error";
+		return -1;
+	}
+}
 
 bool matrix::input()
 {
@@ -190,4 +218,40 @@ bool matrix::input()
 		cout << endl;
 	}
 	return true;
+}
+
+int vector::getEl(int n)
+{
+	if (n < 11 && n>0) { return vec[n]; }
+	else
+	{
+		cout << "error";
+		return -1;
+	}
+}
+
+bool vector::enter()
+{
+	cout << "n=";
+	cin >> n;
+	if (n < 1 || n>10) { return false; }
+	for (int j = 0; j < n; j++)
+	{
+		cout << "vec[" << j << "]=";
+		cin >> vec[j];
+	}
+	return true;
+}
+
+bool vector::multvec(vector vec2)
+{
+	int scal=0;
+	if (n = vec2.getN()) {
+		for (int i = 0; i < n; i++)
+		{
+			scal += vec[i] * vec2.getEl(i);
+		}
+		cout << scal;
+	}
+	else { return false; }
 }
