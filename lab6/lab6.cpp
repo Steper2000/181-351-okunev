@@ -101,12 +101,16 @@ int main()
 {
 	matrix matrA, matrB;
 	vector vecA, vecB;
-	matrA.input();
-	matrB.input();
+	//matrA.input();
+	//matrB.input();
 	//matrA.printM(); 
 	//matrA.transp(); 
-	matrA.summMatrix(matrB);
-					
+	//matrA.summMatrix(matrB);
+	vecA.enter();
+	int k;
+	cout << "k=";
+	cin >> k;
+	vecA.kvec(k);
 					
     
 	//vecA.enter();
