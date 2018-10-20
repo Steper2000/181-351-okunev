@@ -101,16 +101,17 @@ int main()
 {
 	matrix matrA, matrB;
 	vector vecA, vecB;
-	//matrA.input();
-	//matrB.input();
-	//matrA.printM(); 
+	matrA.input();
+	matrB.input();
+
 	//matrA.transp(); 
-	//matrA.summMatrix(matrB);
-	vecA.enter();
+	matrA.multMatrix(matrB);
+	
+	//vecA.enter();
 	int k;
-	cout << "k=";
-	cin >> k;
-	vecA.kvec(k);
+	//cout << "k=";
+	//cin >> k;
+	//vecA.kvec(k);
 					
     
 	//vecA.enter();
@@ -151,8 +152,8 @@ bool matrix::summMatrix(matrix matr2)
 				matr[i][j] += matr2.getElem(i, j);
 			}
 		}
-		return true;
 		printM();
+		return true;
 	}
 	else { return false; }
 }
@@ -174,12 +175,12 @@ bool matrix::multMatrix(matrix matr2)
 {
 	if (columns == matr2.getRows())
 	{
-		for (int i = 0; i < matr2.getRows(); i++)
+		for (int i = 0; i < rows; i++)
 		{
-			for (int j = 0; j < columns; j++)
+			for (int j = 0; j < matr2.getColumns(); j++)
 			{
 				int sum = 0;
-				for (int k = 0; k < rows; k++) {
+				for (int k = 0; k < columns; k++) {
 					sum += matr[i][k] * matr2.getElem(k, j);
 				}
 				res[i][j] = sum;
