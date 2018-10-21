@@ -64,20 +64,9 @@ public:
 		}
 	};
 
-	void printR()
-	{
-		for (int i = 0; i < rows; i++)
-		{
-			for (int j = 0; j < columns; j++)
-			{
-				cout << res[i][j] <<"\t";
-			}
-			cout << endl;
-		}
-	};
 
 };
-class vector
+class vector : public matrix
 {
 private:
 	int vec[10];
@@ -186,10 +175,21 @@ bool matrix::multMatrix(matrix matr2)
 				res[i][j] = sum;
 			}
 		}
-		printR();
-		return true;
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < matr2.getColumns(); j++)
+			{
+				cout << res[i][j]<<" ";
+			}
+			cout << endl;
+		}
+         return true;
 	}
-    else { return false; }
+    else
+	{ 
+		cout << "col1 != row2";
+			return false; 
+	}
 }
 
 int matrix::getElem(int row, int col)
