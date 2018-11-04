@@ -90,20 +90,20 @@ int main()
 {
 	matrix matrA, matrB;
 	vector vecA, vecB;
-	matrA.input();
-	matrB.input();
+	//matrA.input();
+	//matrB.input();
 
 	//matrA.transp(); 
-	matrA.multMatrix(matrB);
+	//matrA.multMatrix(matrB);
 	
-	//vecA.enter();
-	int k;
+	
+	//int k;
 	//cout << "k=";
 	//cin >> k;
 	//vecA.kvec(k);
-					
-    
-	//vecA.enter();
+	vecA.enter();
+	vecB.enter();
+	vecA.multvec(vecB);
 	//vecA.kvec(5);
 	
 	/*int a = -15;
@@ -227,7 +227,7 @@ bool matrix::input()
 
 int vector::getEl(int n)
 {
-	if (n < 11 && n>0) { return vec[n]; }
+	if (n < 10 && n>-1) { return vec[n]; }
 	else
 	{
 		cout << "error";
