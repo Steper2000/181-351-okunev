@@ -1,4 +1,6 @@
-//#include "stdafx.h"
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 #include <iostream>
 #include <openssl/conf.h> // функции, структуры и константы настройки OpenSSL
 #include <openssl/conf.h>
@@ -8,6 +10,7 @@
 #include <fstream>
 #include <string>
 #include <cstring>
+
 #pragma comment (lib, "ws2_32.LIB")
 #pragma comment (lib, "gdi32.LIB")
 #pragma comment (lib, "advapi32.LIB")
@@ -15,6 +18,7 @@
 #pragma comment (lib, "user32")
 #pragma comment (lib, "wldap32")
 
+//#define BUFLEN 256
 // библиотеки OpenSSL (openssl.org) подключаются неявно динамически (см. конспект лаб. по библиотекам)
 
 using namespace std;
@@ -43,10 +47,9 @@ int main()
 			return a;
 		}
 	};
-
-	unsigned char plaintext[256]; //= (unsigned char *)"test"; 
-		//(unsigned char *)"EVP_EncryptUpdate() encrypts inl bytes from the buffer in and writes the encrypted version to out";// исходный текст
-	int plaintext_len = strlen((char *)plaintext); // длина текста
+	
+	unsigned char plaintext[256];
+	int plaintext_len;// = fread(plaintext, 1, BUFLEN, in); // длина текста
 	unsigned char *key = (unsigned char *)"0123456789"; // пароль (ключ)
 	unsigned char *iv = (unsigned char *)"0123456789012345"; // инициализирующий вектор, рандомайзер
 	unsigned char cryptedtext[256]; // зашифрованный результат
@@ -66,52 +69,35 @@ int main()
 		key, // ключ/пароль/секрет
 		iv); // рандомайзер (случайный начальный вектор)
 
-	fstream t1, t2;
-	t1.open("t1.txt", fstream::in | fstream::binary);
-	//cout << std::strerror(errno);
-	t2.open("t2.txt", fstream::out | fstream::binary);
-	string str1;
-	getline(t1, str1);
-	//strncpy_s((char*)plaintext , str1.c_str() , str1.length()+1);
-	//for (int i = 0; i < str1.length(); i++) {
-	//plaintext[i] = str1[i];
-	//}
 	
-	//for (int i = 0; i < plaintext_len; i++)
-	//{
-		//cout << plaintext[i];
-	//}
-//	cout << endl;
-
 	int len;
-	int cryptedtext_len;
-	while (!t1.eof())
+	FILE *t1, *t2;
+	t1 = fopen("t1.txt", "r");
+	t2 = fopen("t2.txt", "w");
+	for (;;)
 	{
-		//if ()
-		t1.read((char*)plaintext, 256);
-		
-		/*for (int i = 0; i < plaintext_len; i++)
-		{
-			cout << plaintext[i];
-		}
-		cout << endl;*/
 		// 4. САМ ПРОЦЕСС ШИФРОВАНИЯ - ФУКНЦИЯ EVP_EncryptUpdate
-
-		EVP_EncryptUpdate(ctx, // объект с настройками
+		plaintext_len = fread(plaintext, 1, 256, t1);
+		if (plaintext_len <= 0) break;
+		if (!EVP_EncryptUpdate(ctx, // объект с настройками
 			cryptedtext, // входной параметр: ссылка, куда помещать зашифрованные данные
 			&len, // выходной параметр: длина полученного шифра
 			plaintext, // входной параметр: что шифровать
-			plaintext_len); // входной параметр : длина входных данных
-		cryptedtext_len = len;
-		t2.write((char*)cryptedtext, 256);
+			plaintext_len)) return 0; // входной параметр : длина входных данных
+		fwrite(cryptedtext, 1, len, t2);
 	}
+	int cryptedtext_len = len;
+
 	// 5. Финализация процесса шифрования
 	// необходима, если последний блок заполнен данными не полностью
 	EVP_EncryptFinal_ex(ctx, cryptedtext + len, &len);
 	cryptedtext_len += len;
+	fwrite(cryptedtext, 1, cryptedtext_len, t2);
 
 	// 6. Удаление структуры
 	EVP_CIPHER_CTX_free(ctx);
+	fclose(t1);
+	fclose(t2);
 
 	// вывод зашифрованных данных
 	for (int i = 0; i < cryptedtext_len; i++)
@@ -142,8 +128,6 @@ int main()
 	decryptedtext[dectypted_len] = '\0';
 	cout << decryptedtext << endl;
 
-	t1.close();
-	t2.close();
 	// --- шифрование файла
 	// производится точно так же, но порциями, в цикле
 	// в цикле

@@ -285,13 +285,13 @@ std::cout << std::endl;
 std::cout << "Первый элемент в списке: " << mylist.front() << std::endl;
 mylist.pop_front(); // удаляем элемент из списка
 std::cout << "Первый элемент (после удаления): " << mylist.front() << std::endl;
-std::list<int>::iterator it; //указатель
-it = mylist.begin();//приравниваем его первому элементу
-it++; // сдвигаем на один назад
-mylist.insert(it, 10); // вставляем 10 со сдигом вправо
+std::list<int>::iterator it1; //указатель
+it1 = mylist.begin();//приравниваем его первому элементу
+it1++; // сдвигаем на один назад
+mylist.insert(it1, 10); // вставляем 10 со сдигом вправо
 std::cout << "список после добавления 10:";
-for (it = mylist.begin(); it != mylist.end(); ++it)
-std::cout << ' ' << *it;
+for (it1 = mylist.begin(); it1 != mylist.end(); ++it1)
+std::cout << ' ' << *it1;
 std::cout << '\n';
 if (!mylist.empty()) // проверяем пуст ли список (нет) 
 std::cout << "Список не пуст!";*/
