@@ -82,12 +82,19 @@ public:
 	{
 		add(root, elem);
 	}
+
 	void f()
 	{
 		Node *temp = new Node;
 		*temp = *root;
 		std::cout << temp->item;
-		while (temp->son != NULL)
+		f(temp);
+		*temp = *root;
+		*temp = *temp->son;
+		f(temp);
+	
+		
+		/*while (temp->son != NULL)
 		{
 			*temp = *temp->son;
 			std::cout << temp->item;
@@ -97,9 +104,9 @@ public:
 				std::cout << temp->item;
 			}
 			//*temp = *root;
-		}
+		}*/
 	}
-	void print()
+	/*void print()
 	{
 		Node *temp = new Node;
 		*temp = *root;
@@ -113,8 +120,9 @@ public:
 			}
 			std::cout << temp->item;
 		}
-	}
-private: void add(Node *&node, const T &item)
+	}*/
+private: 
+	void add(Node *&node, const T &item)
 	{
 	int a;
 	if (node == NULL) 
@@ -132,6 +140,23 @@ private: void add(Node *&node, const T &item)
 			add(node->bro, item);
 		}
 	}
+	}
+	void f(Node *&node)
+	{
+		if (node->son != NULL)
+		{
+			*node = *node->son;
+			std::cout << node->item;
+			while (node->bro != NULL)
+			{
+				*node = *node->bro;
+				std::cout << node->item;
+			}
+
+			*node = *root;
+		*node = *node->son;
+		}
+		
 	}
 };
 
@@ -167,10 +192,8 @@ int main() {
 	li.print();*/
 
 	tree<int> t1;
-	t1.add(1); //0 брат; 1 сын
-	t1.add(2);
-	t1.add(3);
-	t1.add(4);
+	for (int i=1; i<=4; i++)t1.add(i); //0 брат; 1 сын
+	
 	t1.f();
 	//t1.print();
 	//getchar();
