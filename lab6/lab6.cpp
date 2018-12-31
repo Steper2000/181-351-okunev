@@ -34,7 +34,7 @@ using namespace std;
 
 class matrix
 {
-private: 
+protected: 
 	int matr[10][10];
 	int rows, columns;
 	int res[10][10];
@@ -51,7 +51,7 @@ public:
 	
 	bool input();
 	void transp();
-	
+	void Kmult(int k);
 	void printM()
 	{
 		for (int i = 0; i < rows; i++)
@@ -69,21 +69,21 @@ public:
 class vector : public matrix
 {
 private:
-	int vec[10];
-	int n;
+	//int vec[10];
+	//int n;
 public: 
-	int getN() { return n; }
-	int getEl(int n);
-	bool enter();
-	void kvec(int k)
+	//int getN() { return n; }
+	//int getEl(int n);
+	//bool enter();
+	/*void kvec(int k)
 	{
 	 for (int i=0; i<n; i++)
 	 {
 		 vec[i] *= k;
 		 cout << vec[i]<<' ';
 	 }
-	};
-	bool multvec(vector vec2);
+	};*/
+	bool multvec(matrix vec2);
 };
 
 int main()
@@ -92,18 +92,23 @@ int main()
 	vector vecA, vecB;
 	//matrA.input();
 	//matrB.input();
-
+	//matrA.Kmult(3);
 	//matrA.transp(); 
 	//matrA.multMatrix(matrB);
 	
 	
 	//int k;
-	//cout << "k=";
+ //cout << "k=";
 	//cin >> k;
-	//vecA.kvec(k);
-	vecA.enter();
-	vecB.enter();
+	vecA.input();
+	vecB.input();
+	//vecA.Kmult(k);
 	vecA.multvec(vecB);
+	//vecA.summMatrix(vecB);
+	//vecA.kvec(k);
+	//vecA.enter();
+	//vecB.enter();
+	//vecA.multvec(vecB);
 	//vecA.kvec(5);
 	
 	/*int a = -15;
@@ -158,6 +163,18 @@ void matrix::transp()
 		}
 		cout << endl;
 	}
+}
+
+void matrix::Kmult(int k)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < columns; j++)
+		{
+			matr[i][j] *= k;
+		}
+	}
+	printM();
 }
 
 bool matrix::multMatrix(matrix matr2)
@@ -224,7 +241,7 @@ bool matrix::input()
 	}
 	return true;
 }
-
+/*
 int vector::getEl(int n)
 {
 	if (n < 10 && n>-1) { return vec[n]; }
@@ -234,8 +251,8 @@ int vector::getEl(int n)
 		return -1;
 	}
 }
-
-bool vector::enter()
+*/
+/*bool vector::enter()
 {
 	cout << "n=";
 	cin >> n;
@@ -246,15 +263,15 @@ bool vector::enter()
 		cin >> vec[j];
 	}
 	return true;
-}
+}*/
 
-bool vector::multvec(vector vec2)
+bool vector::multvec(matrix vec2)
 {
 	int scal=0;
-	if (n = vec2.getN()) {
-		for (int i = 0; i < n; i++)
+	if (columns = vec2.getColumns()) {
+		for (int i = 0; i < columns; i++)
 		{
-			scal += vec[i] * vec2.getEl(i);
+			scal += matr[0][i] * vec2.getElem(0, i);
 		}
 		cout << scal;
 	}

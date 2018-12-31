@@ -25,6 +25,7 @@ using namespace std;
 
 int main()
 {
+	setlocale(LC_ALL, "Russian");
 	// работа с криптофункциями OpenSSL:
 	// 1) создание объекта с настройками
 	// 2) собственно, шифрование
