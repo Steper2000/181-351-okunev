@@ -70,43 +70,57 @@ int main()
 		key, // ключ/пароль/секрет
 		iv); // рандомайзер (случайный начальный вектор)
 
-	
+	unsigned char plaintext2[1000];
 	int len;
-	FILE *t1, *t2;
-	t1 = fopen("t1.txt", "r");
+	FILE *t1, *t2, *t3;
+	t1 = fopen("t3.txt", "r");
 	t2 = fopen("t2.txt", "w");
+	
 	for (;;)
 	{
 		// 4. САМ ПРОЦЕСС ШИФРОВАНИЯ - ФУКНЦИЯ EVP_EncryptUpdate
 		plaintext_len = fread(plaintext, 1, 256, t1);
+		
 		if (plaintext_len <= 0) break;
 		if (!EVP_EncryptUpdate(ctx, // объект с настройками
 			cryptedtext, // входной параметр: ссылка, куда помещать зашифрованные данные
 			&len, // выходной параметр: длина полученного шифра
 			plaintext, // входной параметр: что шифровать
 			plaintext_len)) return 0; // входной параметр : длина входных данных
-		fwrite(cryptedtext, 1, len, t2);
+		
+		if (plaintext_len == 256) 
+		{
+			fwrite(cryptedtext, 1, len, t2);
+		for (int i = 0; i < len; i++)
+		{
+			cout << hex << cryptedtext[i];
+			if ((i + 1) % 80 == 0) cout << endl;
+		}
+		}
+		
 	}
 	int cryptedtext_len = len;
-
+	
+	
 	// 5. Финализация процесса шифрования
 	// необходима, если последний блок заполнен данными не полностью
 	EVP_EncryptFinal_ex(ctx, cryptedtext + len, &len);
 	cryptedtext_len += len;
 	fwrite(cryptedtext, 1, cryptedtext_len, t2);
 
+	for (int i = 0; i < cryptedtext_len; i++)
+	{
+		cout << hex << cryptedtext[i];
+		if ((i + 1) % 80 == 0) cout << endl;
+	}
+	cout << endl;
+	cout << "------------ " << endl;
+
+
 	// 6. Удаление структуры
 	EVP_CIPHER_CTX_free(ctx);
 	fclose(t1);
 	fclose(t2);
-
-	// вывод зашифрованных данных
-	for (int i = 0; i < cryptedtext_len; i++)
-	{
-		cout << hex << cryptedtext[i];
-		if ((i + 1) % 32 == 0) cout << endl;
-	}
-	cout << endl;
 
 	// РАСШИФРОВКА
 
@@ -117,17 +131,55 @@ int main()
 	EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv); // инициализация методом AES, ключом и вектором
 
 	// 3.
-	EVP_DecryptUpdate(ctx, decryptedtext, &len, cryptedtext, cryptedtext_len);  // СОБСТВЕННО, ШИФРОВАНИЕ
+	int x = 0;
+	t3 = fopen("t2.txt", "r");
+	
+//char a[10000];
+//int a1 = 0;
+//a1 = fread(a, 1, 10000, t3);
+	
+	for (;;)
+	{
+		//x += 1;
+		//cout << "\n"<< x<<" ->";
+
+		cryptedtext_len = fread(cryptedtext, 1, 256, t3);
+		//cout << dec << cryptedtext_len;
+		if (cryptedtext_len <= 0) break;
+		if (!EVP_DecryptUpdate(ctx, decryptedtext, &len, cryptedtext, cryptedtext_len)) return 0; // входной параметр : длина входных данных
+
+		if (cryptedtext_len == 256)
+		{
+			
+			for (int i = 0; i < len; i++)
+			{
+				cout << hex << decryptedtext[i];
+				if ((i + 1) % 80 == 0) cout << endl;
+			}
+		}
+
+	}
+	//EVP_DecryptUpdate(ctx, decryptedtext, &len, cryptedtext, cryptedtext_len);  // СОБСТВЕННО, ШИФРОВАНИЕ
 
 	// 4.
-	int dectypted_len = len;
+int decrypted_len = len;
 	EVP_DecryptFinal_ex(ctx, decryptedtext + len, &len);
-
+	//cout << decryptedtext << endl;
+	//cout << "------------ " << endl;
 	// 5.
-	dectypted_len += len;
+	decrypted_len += len;
+	for (int i = 0; i < decrypted_len; i++)
+	{
+		cout << hex << decryptedtext[i];
+		//if ((i + 1) % 80 == 0) cout << endl;
+	}
+	cout << endl;
+	cout << "------------ " << endl;
+
 	EVP_CIPHER_CTX_free(ctx);
-	decryptedtext[dectypted_len] = '\0';
-	cout << decryptedtext << endl;
+	fclose(t3);
+	//decryptedtext[decrypted_len] = '\0';
+	//cout << decryptedtext << endl;
 
 	// --- шифрование файла
 	// производится точно так же, но порциями, в цикле
