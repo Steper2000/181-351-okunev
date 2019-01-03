@@ -11,6 +11,7 @@
 #include <string>
 #include <cstring>
 
+
 #pragma comment (lib, "ws2_32.LIB")
 #pragma comment (lib, "gdi32.LIB")
 #pragma comment (lib, "advapi32.LIB")
@@ -72,9 +73,9 @@ int main()
 
 	unsigned char plaintext2[1000];
 	int len;
-	FILE *t1, *t2, *t3;
-	t1 = fopen("t3.txt", "r");
-	t2 = fopen("t2.txt", "w");
+	FILE *t1, *t2 ;
+	t1 = fopen("t3.txt", "rb");
+	t2 = fopen("t2.txt", "wb");
 	
 	for (;;)
 	{
@@ -131,20 +132,13 @@ int main()
 	EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv); // инициализация методом AES, ключом и вектором
 
 	// 3.
-	int x = 0;
-	t3 = fopen("t2.txt", "r");
-	
-//char a[10000];
-//int a1 = 0;
-//a1 = fread(a, 1, 10000, t3);
-	
+	//int x = 0;
+	FILE *t3;
+	t3 = fopen("t2.txt", "rb");
+
 	for (;;)
 	{
-		//x += 1;
-		//cout << "\n"<< x<<" ->";
-
 		cryptedtext_len = fread(cryptedtext, 1, 256, t3);
-		//cout << dec << cryptedtext_len;
 		if (cryptedtext_len <= 0) break;
 		if (!EVP_DecryptUpdate(ctx, decryptedtext, &len, cryptedtext, cryptedtext_len)) return 0; // входной параметр : длина входных данных
 
@@ -154,7 +148,7 @@ int main()
 			for (int i = 0; i < len; i++)
 			{
 				cout << hex << decryptedtext[i];
-				if ((i + 1) % 80 == 0) cout << endl;
+				//if ((i + 1) % 80 == 0) cout << endl;
 			}
 		}
 
@@ -164,8 +158,6 @@ int main()
 	// 4.
 int decrypted_len = len;
 	EVP_DecryptFinal_ex(ctx, decryptedtext + len, &len);
-	//cout << decryptedtext << endl;
-	//cout << "------------ " << endl;
 	// 5.
 	decrypted_len += len;
 	for (int i = 0; i < decrypted_len; i++)
@@ -178,8 +170,6 @@ int decrypted_len = len;
 
 	EVP_CIPHER_CTX_free(ctx);
 	fclose(t3);
-	//decryptedtext[decrypted_len] = '\0';
-	//cout << decryptedtext << endl;
 
 	// --- шифрование файла
 	// производится точно так же, но порциями, в цикле
