@@ -95,7 +95,7 @@ int main()
 		for (int i = 0; i < len; i++)
 		{
 			cout << hex << cryptedtext[i];
-			if ((i + 1) % 80 == 0) cout << endl;
+			//if ((i + 1) % 80 == 0) cout << endl;
 		}
 		}
 		
@@ -132,7 +132,6 @@ int main()
 	EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv); // инициализация методом AES, ключом и вектором
 
 	// 3.
-	//int x = 0;
 	FILE *t3;
 	t3 = fopen("t2.txt", "rb");
 

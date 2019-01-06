@@ -68,9 +68,9 @@ public:
 };
 class vector : public matrix
 {
-private:
-	//int vec[10];
-	//int n;
+/*private:
+	int vec[10];
+	int n;*/
 public: 
 	//int getN() { return n; }
 	//int getEl(int n);
@@ -103,7 +103,8 @@ int main()
 	vecA.input();
 	vecB.input();
 	//vecA.Kmult(k);
-	vecA.multvec(vecB);
+	vecA.summMatrix(vecB);
+	//vecA.multvec(vecB);
 	//vecA.summMatrix(vecB);
 	//vecA.kvec(k);
 	//vecA.enter();
