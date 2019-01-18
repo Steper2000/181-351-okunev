@@ -104,13 +104,8 @@ int main()
 	vecB.input();
 	//vecA.Kmult(k);
 	vecA.summMatrix(vecB);
-	//vecA.multvec(vecB);
-	//vecA.summMatrix(vecB);
-	//vecA.kvec(k);
-	//vecA.enter();
-	//vecB.enter();
-	//vecA.multvec(vecB);
-	//vecA.kvec(5);
+	//vecA.multvec(vecB)
+	
 	
 	/*int a = -15;
 	double d = 1000.5e+03;//=1000.5 *10^3 = 1000.5 * pow(10,3) = 1000500
