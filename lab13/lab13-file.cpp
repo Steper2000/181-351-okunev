@@ -22,6 +22,9 @@
 //#define BUFLEN 256
 // библиотеки OpenSSL (openssl.org) подключаются неявно динамически (см. конспект лаб. по библиотекам)
 
+//в разделе С++/общие пишем ...\openssl-master\openssl-master\include
+//в разделе Компоновщик/общие/Дополнительные каталоги библиотек пишем ...\openssl-master\openssl-master
+//в разделе Компоновщик/ввод пишем libcrypto.lib
 using namespace std;
 
 int main()

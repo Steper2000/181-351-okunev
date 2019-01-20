@@ -242,14 +242,15 @@ std::deque<int> deq1;
 		deq1.push_front(b);
 		k++;
 	}
+	//std::cout << deq1[2];
 	while (1) {
 		if (deq1.back() == deq1.front())
 		{
 			deq1.pop_back();
 			deq1.pop_front();
 		}
-		else { std::cout << "not polendrom"; break; }
-		if (deq1.size() == 1 || deq1.size() == 0) { std::cout << "polendrom"; break; }
+		else { std::cout << "not polendrom"<<std::endl; break; }
+		if (deq1.size() == 1 || deq1.size() == 0) { std::cout << "polendrom"<<std::endl; break; }
 	}
 	*/
 /*
@@ -343,7 +344,7 @@ for (int i = 0, c = 'a'; i < 5; ++i, ++c)
 	myMap.insert(std::pair<char, int>(c, i));
 }
 
-///вывод не явно инициализированной map на экран
+///вывод неявно инициализированной map на экран
 for (auto it = myMap.begin(); it != myMap.end(); ++it)
 {
 	std::cout << (*it).first << " : " << (*it).second << std::endl;
@@ -356,8 +357,9 @@ myMap.insert(mm, std::pair<char, int>('c', 200)); //добавление
 for (auto it = myMap.begin(); it != myMap.end(); ++it)
 {
 	std::cout << (*it).first << " : " << (*it).second << std::endl;
-}*/
-
+}
+std::cout << "\n wtf"<<myMap['c'];
+*/
 // ЗАДАЧА 7 
 /*
 Составить таблицу сравнения по времени выполнения операций
