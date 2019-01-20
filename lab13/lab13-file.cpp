@@ -22,11 +22,15 @@
 //#define BUFLEN 256
 // библиотеки OpenSSL (openssl.org) подключаются неявно динамически (см. конспект лаб. по библиотекам)
 
-//в разделе С++/общие пишем ...\openssl-master\openssl-master\include
+//в разделе С++/общие/дополнительные каталоги включаемых файлов  пишем ...\openssl-master\openssl-master\include
 //в разделе Компоновщик/общие/Дополнительные каталоги библиотек пишем ...\openssl-master\openssl-master
 //в разделе Компоновщик/ввод пишем libcrypto.lib
 // в перл консоле перейти в корень openssl и выполнить команду perl Configure VC-WIN64A no-asm
 //затем в x64 native tools перейти в корень openssl и ввести nmake
+//команда cd /d для смены диска и каталога
+//команда cd .. возращает на один каталог вверх
+// вверху в свойсвах конфигурация и платформа выбрать все
+//libcrypto.dll поместить в общий x64 debug 
 using namespace std;
 
 int main()
@@ -76,7 +80,7 @@ int main()
 		key, // ключ/пароль/секрет
 		iv); // рандомайзер (случайный начальный вектор)
 
-	unsigned char plaintext2[1000];
+	
 	int len;
 	FILE *t1, *t2 ;
 	t1 = fopen("t3.txt", "rb");
