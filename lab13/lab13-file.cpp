@@ -25,6 +25,8 @@
 //в разделе С++/общие пишем ...\openssl-master\openssl-master\include
 //в разделе Компоновщик/общие/Дополнительные каталоги библиотек пишем ...\openssl-master\openssl-master
 //в разделе Компоновщик/ввод пишем libcrypto.lib
+// в перл консоле перейти в корень openssl и выполнить команду perl Configure VC-WIN64A no-asm
+//затем в x64 native tools перейти в корень openssl и ввести nmake
 using namespace std;
 
 int main()
