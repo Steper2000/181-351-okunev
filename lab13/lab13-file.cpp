@@ -69,7 +69,7 @@ int main()
 	// 1. Создаётся указатель на несуществующую структуру
 	// структура - тип данных в C++, близка к КЛАССУ, различия минимальны
 	EVP_CIPHER_CTX *ctx; // structure
-
+	/*
 	// 2. Для указателя создаётся пустая структура настроек (метод, ключ, вектор инициализации и т.д.)
 	ctx = EVP_CIPHER_CTX_new(); // создание структуры с настройками метода
 
@@ -83,7 +83,7 @@ int main()
 	
 	int len;
 	FILE *t1, *t2 ;
-	t1 = fopen("t3.txt", "rb");
+	t1 = fopen("t1.txt", "rb");
 	t2 = fopen("t2.txt", "wb");
 	
 	for (;;)
@@ -131,7 +131,7 @@ int main()
 	EVP_CIPHER_CTX_free(ctx);
 	fclose(t1);
 	fclose(t2);
-
+	*/
 	// РАСШИФРОВКА
 
 	// 1.
@@ -143,7 +143,8 @@ int main()
 	// 3.
 	FILE *t3;
 	t3 = fopen("t2.txt", "rb");
-
+	int len;
+	int cryptedtext_len;
 	for (;;)
 	{
 		cryptedtext_len = fread(cryptedtext, 1, 256, t3);
@@ -197,4 +198,21 @@ int decrypted_len = len;
 	*/
 	getchar();
 	return 0;
-}
+	/*
+	Void bruteforse(char *buffer, char* key[33])
+	{
+		EVP_CIPFER_CTX * ctx;
+		Unsigned char * iv = (unsigned char *) "знаки из задания";
+		Char out_buf[256] = { 0 };
+		Int len = 0;
+		For(int i = 0, i <= 9999, i++)
+			sprintf(key, "%032d", i)
+			* ctx = EVP_CIPFER_CTX_new();
+		EVP_decryptInit_ex(в настройках тут берём из буфера, ключ который сгенерировало выше и остальные по списку перед ключом пишем(const unsigned char *);
+		EVP_DecryptUpdate(опять буфер и ключ перед буферами(unsigned char*);
+		If(buffer[0] == '{' && buffer[1] == '\r'; && buffer[2] = '\n')
+			Std::cout < < key < < std::endl < < buffer < < std::endl;
+		Break;
+
+	};
+	*/

@@ -201,7 +201,7 @@ user_data::user_data(char * p_first_name, char * p_second_name, char * p_str_pas
 	
 	int main()
 	{
-		
+	/*
 
 	user_data birthday;
     char birthdate_array[11] = "25.09.2000";
@@ -219,7 +219,7 @@ user_data::user_data(char * p_first_name, char * p_second_name, char * p_str_pas
 
 
 		cout << "\nEnter your message"<<endl;
-
+*/
 //применение шифра цезаря для строчных латинских букв со сдвигом вправо на 3 
 	char string[6]; // вводимая строка из 5 букв
 	cin >> string;
