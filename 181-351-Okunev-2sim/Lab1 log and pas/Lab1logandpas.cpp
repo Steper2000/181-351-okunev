@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Lab1logandpas.h"
 #include <QMessageBox>
+#include "menu.h"
 #include <string>
 #include <fstream>
 
@@ -63,44 +64,48 @@ void Lab1logandpas::on_pushButton_autorise_clicked()
 	QString login = ui.line_login->text();
 	QString password = ui.line_password->text();
 	QMessageBox msgBox;
+	
 	if (autorise(login, password) == 2)
 	{
 
 		if (login == "admin")
 		{
-			msgBox.setText("hello admin");
+			msgBox.setText("Hello "+login);
 			msgBox.exec();
 		}
 		else 
 		{
-			std::string sl = login.toStdString();
-			std::string sll;
+			std::string sl = login.toStdString(); //копирует логин
+			std::string sll; // первые 7 символов логина
 			sll.insert(0, sl, 0, 7);
 			if (sll == "manager")
 		    {
-			  msgBox.setText("hello manager");
+			  msgBox.setText("Hello manager!");
 			  msgBox.exec();
 		    }
 		   else
 		   {
-			 msgBox.setText("hello user");
-			 int res = msgBox.exec();
+			 //msgBox.setText("Hello "+login+"!");
+			 //msgBox.exec();
+			menu m;
+			m.setModal(true);
+			m.exec();
 		   }
 		}
 	}
 	else
 	{
 	
-		msgBox.setText("nonono");
+		msgBox.setText("Wrong");
 		msgBox.setInformativeText("Again?");
 		msgBox.setStandardButtons(QMessageBox::Retry | QMessageBox::Close);
 		msgBox.setDefaultButton(QMessageBox::Save);
-	
+		msgBox.exec();
 	}
-	int res = msgBox.exec();
+	/*int res = msgBox.exec();
 	if (res == QMessageBox::Close)
 	{
 		close();
-	}
+	}*/
 	
 }
