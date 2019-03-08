@@ -12,5 +12,5 @@ public:
 	~change();
 private: Ui::change ui;
 private slots:
-	void on_pushButton_change_close();
+	void on_pushButton_change_clicked();
 };

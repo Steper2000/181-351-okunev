@@ -29,6 +29,9 @@ public:
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_blog;
     QLineEdit *line_blogin;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *label_bpass;
+    QLineEdit *line_bpass;
     QHBoxLayout *horizontalLayout;
     QLabel *label_Nlogin;
     QLineEdit *line_Nlogin;
@@ -66,6 +69,22 @@ public:
 
 
         verticalLayout_2->addLayout(horizontalLayout_3);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        label_bpass = new QLabel(layoutWidget);
+        label_bpass->setObjectName(QString::fromUtf8("label_bpass"));
+
+        horizontalLayout_4->addWidget(label_bpass);
+
+        line_bpass = new QLineEdit(layoutWidget);
+        line_bpass->setObjectName(QString::fromUtf8("line_bpass"));
+
+        horizontalLayout_4->addWidget(line_bpass);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_4);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -121,6 +140,7 @@ public:
     {
         change->setWindowTitle(QApplication::translate("change", "change", nullptr));
         label_blog->setText(QApplication::translate("change", "Old login", nullptr));
+        label_bpass->setText(QApplication::translate("change", "Old password", nullptr));
         label_Nlogin->setText(QApplication::translate("change", "New login", nullptr));
         label_Npassword->setText(QApplication::translate("change", "New password", nullptr));
         pushButton_change->setText(QApplication::translate("change", "Change", nullptr));

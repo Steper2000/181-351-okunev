@@ -14,4 +14,5 @@ private:
 	Ui::Lab1logandpasClass ui;
 private slots:
 	void on_pushButton_autorise_clicked();
+	void on_Ftest_clicked();
 };

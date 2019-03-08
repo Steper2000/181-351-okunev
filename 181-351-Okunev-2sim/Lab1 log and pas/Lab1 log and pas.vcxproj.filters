@@ -11,6 +11,9 @@
     <ClCompile Include="change.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="classdb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -60,5 +63,10 @@
     <QtRcc Include="Lab1logandpas.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="classdb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

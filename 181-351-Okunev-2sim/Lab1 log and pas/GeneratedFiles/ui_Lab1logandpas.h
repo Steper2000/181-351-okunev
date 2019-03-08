@@ -19,6 +19,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
@@ -32,15 +33,17 @@ public:
     QAction *actionClose;
     QAction *actionAbout;
     QWidget *centralWidget;
-    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label_login;
+    QSpacerItem *horizontalSpacer;
     QLineEdit *line_login;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_password;
     QLineEdit *line_password;
+    QPushButton *Ftest;
     QPushButton *pushButton_autorise;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -52,33 +55,36 @@ public:
     {
         if (Lab1logandpasClass->objectName().isEmpty())
             Lab1logandpasClass->setObjectName(QString::fromUtf8("Lab1logandpasClass"));
-        Lab1logandpasClass->resize(548, 306);
+        Lab1logandpasClass->resize(497, 356);
         actionClose = new QAction(Lab1logandpasClass);
         actionClose->setObjectName(QString::fromUtf8("actionClose"));
         actionAbout = new QAction(Lab1logandpasClass);
         actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
         centralWidget = new QWidget(Lab1logandpasClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        layoutWidget = new QWidget(centralWidget);
-        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(120, 50, 251, 141));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget);
+        verticalLayout_3 = new QVBoxLayout(centralWidget);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_login = new QLabel(layoutWidget);
+        label_login = new QLabel(centralWidget);
         label_login->setObjectName(QString::fromUtf8("label_login"));
 
         horizontalLayout->addWidget(label_login);
 
-        line_login = new QLineEdit(layoutWidget);
+        horizontalSpacer = new QSpacerItem(17, 5, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        line_login = new QLineEdit(centralWidget);
         line_login->setObjectName(QString::fromUtf8("line_login"));
 
         horizontalLayout->addWidget(line_login);
@@ -89,12 +95,12 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_password = new QLabel(layoutWidget);
+        label_password = new QLabel(centralWidget);
         label_password->setObjectName(QString::fromUtf8("label_password"));
 
         horizontalLayout_2->addWidget(label_password);
 
-        line_password = new QLineEdit(layoutWidget);
+        line_password = new QLineEdit(centralWidget);
         line_password->setObjectName(QString::fromUtf8("line_password"));
 
         horizontalLayout_2->addWidget(line_password);
@@ -105,7 +111,12 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
-        pushButton_autorise = new QPushButton(layoutWidget);
+        Ftest = new QPushButton(centralWidget);
+        Ftest->setObjectName(QString::fromUtf8("Ftest"));
+
+        verticalLayout_2->addWidget(Ftest);
+
+        pushButton_autorise = new QPushButton(centralWidget);
         pushButton_autorise->setObjectName(QString::fromUtf8("pushButton_autorise"));
         QFont font;
         font.setPointSize(16);
@@ -114,10 +125,13 @@ public:
 
         verticalLayout_2->addWidget(pushButton_autorise);
 
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
         Lab1logandpasClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Lab1logandpasClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 548, 18));
+        menuBar->setGeometry(QRect(0, 0, 497, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuHelp = new QMenu(menuBar);
@@ -148,6 +162,7 @@ public:
         actionAbout->setText(QApplication::translate("Lab1logandpasClass", "About", nullptr));
         label_login->setText(QApplication::translate("Lab1logandpasClass", "Login", nullptr));
         label_password->setText(QApplication::translate("Lab1logandpasClass", "Password", nullptr));
+        Ftest->setText(QApplication::translate("Lab1logandpasClass", "PushButton", nullptr));
         pushButton_autorise->setText(QApplication::translate("Lab1logandpasClass", "LOGIN", nullptr));
         menuFile->setTitle(QApplication::translate("Lab1logandpasClass", "File", nullptr));
         menuHelp->setTitle(QApplication::translate("Lab1logandpasClass", "Help", nullptr));

@@ -3,7 +3,8 @@
 #include <QMessageBox>
 #include "menu.h"
 #include <string>
-#include <fstream>
+#include "classdb.h"
+//#include <fstream>
 
 Lab1logandpas::Lab1logandpas(QWidget *parent)
 	: QMainWindow(parent)
@@ -15,7 +16,7 @@ Lab1logandpas::Lab1logandpas(QWidget *parent)
 int autorise(QString login, QString password)
 {
 	FILE *base;
-	base = fopen("database.txt", "r");
+	base = fopen("log&pass.txt", "r");
 	//std::ifstream base;
 	//base.open("database.txt");
 	QString sl;
@@ -80,16 +81,17 @@ void Lab1logandpas::on_pushButton_autorise_clicked()
 			sll.insert(0, sl, 0, 7);
 			if (sll == "manager")
 		    {
-			  msgBox.setText("Hello manager!");
-			  msgBox.exec();
+				menu m;
+			m.setModal(true);
+			m.exec();
+			  //msgBox.setText("Hello manager!");
+			 // msgBox.exec();
 		    }
 		   else
 		   {
-			 //msgBox.setText("Hello "+login+"!");
-			 //msgBox.exec();
-			menu m;
-			m.setModal(true);
-			m.exec();
+			 msgBox.setText("Hello "+login+"!");
+			 msgBox.exec();
+			
 		   }
 		}
 	}
@@ -108,4 +110,21 @@ void Lab1logandpas::on_pushButton_autorise_clicked()
 		close();
 	}*/
 	
+}
+
+void Lab1logandpas::on_Ftest_clicked()
+{
+	std::string res;
+	
+	datas da;
+	da.pred = "a";
+	da.date = "s";
+	da.nal = "d";
+	da.otr = "f";
+	da.sum = "g";
+	DataBase s;
+	s.download(res);
+	s.transformStr2BD(res);
+	s.add_data(da);
+	s.write2file();
 }

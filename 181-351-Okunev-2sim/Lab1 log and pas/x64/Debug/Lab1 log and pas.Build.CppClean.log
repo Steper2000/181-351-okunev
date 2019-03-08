@@ -1,11 +1,12 @@
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\qrc_lab1logandpas.obj
-c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\moc_menu.obj
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\moc_change.obj
-c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\menu.obj
-c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1logandpas.obj
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\change.obj
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\moc_lab1logandpas.obj
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\main.obj
+c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\moc_menu.obj
+c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\menu.obj
+c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1logandpas.obj
+c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\classdb.obj
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\vc141.pdb
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\generatedfiles\ui_change.h
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\generatedfiles\ui_lab1logandpas.h
@@ -14,8 +15,8 @@ c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\generatedfiles\qrc_lab1lo
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\generatedfiles\debug\moc_lab1logandpas.cpp
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\generatedfiles\debug\moc_menu.cpp
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\generatedfiles\debug\moc_change.cpp
-c:\181-351-okunev\181-351-okunev-2sim\x64\debug\lab1 log and pas.ilk
 c:\181-351-okunev\181-351-okunev-2sim\x64\debug\lab1 log and pas.exe
+c:\181-351-okunev\181-351-okunev-2sim\x64\debug\lab1 log and pas.ilk
 c:\181-351-okunev\181-351-okunev-2sim\x64\debug\lab1 log and pas.pdb
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\.\generatedfiles\debug\moc_lab1logandpas.cpp
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\.\generatedfiles\debug\moc_menu.cpp
@@ -24,9 +25,9 @@ c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\.\generatedfiles\qrc_lab1
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\.\generatedfiles\ui_change.h
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\.\generatedfiles\ui_lab1logandpas.h
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\.\generatedfiles\ui_menu.h
-c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1 log and pas.tlog\cl.11748.write.1.tlog
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1 log and pas.tlog\cl.command.1.tlog
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1 log and pas.tlog\cl.read.1.tlog
+c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1 log and pas.tlog\cl.write.1.tlog
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1 log and pas.tlog\lab1 log and pas.write.1u.tlog
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1 log and pas.tlog\link.command.1.tlog
 c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\x64\debug\lab1 log and pas.tlog\link.read.1.tlog
