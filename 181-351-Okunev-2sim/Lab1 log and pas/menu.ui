@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>394</width>
-    <height>255</height>
+    <width>438</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>80</x>
      <y>50</y>
-     <width>211</width>
-     <height>131</height>
+     <width>271</width>
+     <height>201</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -35,7 +35,7 @@
        <number>0</number>
       </property>
       <property name="text">
-       <string>Hello! What do you want to do?</string>
+       <string>Hello, manager! What do you want to do?</string>
       </property>
       <property name="textFormat">
        <enum>Qt::AutoText</enum>
@@ -59,15 +59,9 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_change">
+     <widget class="QPushButton" name="pushButton_add">
       <property name="text">
        <string>Change database</string>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
       </property>
      </widget>
     </item>

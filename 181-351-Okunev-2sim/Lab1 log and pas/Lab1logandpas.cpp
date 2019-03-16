@@ -4,6 +4,7 @@
 #include "menu.h"
 #include <string>
 #include "classdb.h"
+#include "showDB.h"
 //#include <fstream>
 
 Lab1logandpas::Lab1logandpas(QWidget *parent)
@@ -15,6 +16,9 @@ Lab1logandpas::Lab1logandpas(QWidget *parent)
 
 int autorise(QString login, QString password)
 {
+	if (login == "" || password == "") {
+		return 0;
+	}
 	FILE *base;
 	base = fopen("log&pass.txt", "r");
 	//std::ifstream base;
@@ -29,30 +33,39 @@ int autorise(QString login, QString password)
 		while (i != ' ') 
 		{
 			sl = sl + i;
-			if (i == '\n')sl.clear();
+			if (i == '\n')
+				sl.clear();
 			i = fgetc(base);
-			if (i == '\n') 
+			if (i == -1) 
 			{ 
-				sl = i;
-				break;
+				return 0;
+				//break;
 			}
 		}
+		
+	
+		
 		i = fgetc(base);
+		
 		while (i != '\n')
 		{
-			sp = sp + i;
-			i = fgetc(base);
+	     sp = sp + i;
+	     i = fgetc(base);
 		}
-		if (login == sl && password == sp)
+		
+		
+	
+        if (login == sl && password == sp)
 		{
 			return 2;
-			break;
+			//break;
 		}
+		/*
 		if (sl=="\n") 
 		{
 			return 0;
 			break;
-		}
+		}*/
 		sl.clear();
 		sp.clear();
 	}
@@ -89,16 +102,18 @@ void Lab1logandpas::on_pushButton_autorise_clicked()
 		    }
 		   else
 		   {
-			 msgBox.setText("Hello "+login+"!");
-			 msgBox.exec();
-			
+			 //msgBox.setText("Hello "+login+"!");
+			 //msgBox.exec();
+				showDB m;
+				m.setModal(true);
+			 m.exec();
 		   }
 		}
 	}
 	else
 	{
 	
-		msgBox.setText("Wrong");
+		msgBox.setText("Wrong login or password");
 		msgBox.setInformativeText("Again?");
 		msgBox.setStandardButtons(QMessageBox::Retry | QMessageBox::Close);
 		msgBox.setDefaultButton(QMessageBox::Save);
@@ -113,18 +128,24 @@ void Lab1logandpas::on_pushButton_autorise_clicked()
 }
 
 void Lab1logandpas::on_Ftest_clicked()
-{
-	std::string res;
-	
+{	
 	datas da;
-	da.pred = "a";
-	da.date = "s";
-	da.nal = "d";
-	da.otr = "f";
-	da.sum = "g";
+	da.pred = "alax";
+	da.date = "1.06.2001";
+	da.nal = "dan";
+	da.otr = "rap";
+	da.sum = "1000";
+	datas das;
+	das.pred = "hesus";
+	das.date = "7.01.2000";
+	das.nal = "indulg";
+	das.otr = "god";
+	das.sum = "2000";
 	DataBase s;
-	s.download(res);
-	s.transformStr2BD(res);
+	s.download();
 	s.add_data(da);
+	s.add_data(das);
+	s.find("indulg");
+	s.del_data(1);
 	s.write2file();
 }

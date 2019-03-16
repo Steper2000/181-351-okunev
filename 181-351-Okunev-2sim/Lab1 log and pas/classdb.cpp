@@ -1,13 +1,17 @@
 #include "classdb.h"
-
-
+#include <fstream>
+#include <string>
 bool DataBase::add_data(datas tempData)//чётко
 {
 	//download(sdb);
-	db.push_back(tempData);
-	//transformStr2BD(sdb);
-	//sdb +="\n"+ tempData.pred+"\t" + tempData.otr+"\t"  + tempData.date+ "\t"  + tempData.nal+"\t" + tempData.sum;
-	return true;
+	if (checkOtr(tempData.otr)) 
+	{
+		db.push_back(tempData);
+		//transformStr2BD(sdb);
+		//sdb +="\n"+ tempData.pred+"\t" + tempData.otr+"\t"  + tempData.date+ "\t"  + tempData.nal+"\t" + tempData.sum;
+		return true;
+	}
+	else return false;
 }
 
 bool DataBase::download(std::string & res) //работает чётко
@@ -34,10 +38,13 @@ void DataBase::transformStr2BD(std::string sdb)// чётко
 		td.pred = line;
 		line.clear();
 		i++;
+		
+		
 		while (sdb[i] != '\t') {
 			line += sdb[i];
 			i++;
 		}
+		//if (checkOtr(line))
 		td.otr = line;
 		line.clear();
 		i++;
@@ -48,6 +55,8 @@ void DataBase::transformStr2BD(std::string sdb)// чётко
 		td.date = line;
 		line.clear();
 		i++;
+		
+		
 		while (sdb[i] != '\t') {
 			line += sdb[i];
 			i++;
@@ -55,6 +64,8 @@ void DataBase::transformStr2BD(std::string sdb)// чётко
 		td.nal = line;
 		line.clear();
 		i++;
+		
+		
 		while (sdb[i] != '\n') {
 			line += sdb[i];
 			i++;
@@ -71,6 +82,28 @@ void DataBase::transformStr2BD(std::string sdb)// чётко
 	//tempData = parsing(line);
 	
 	//othercompany	food	13.05.2006	dan	1000
+}
+
+bool DataBase::del_data(int id)//белиссимо
+{
+	if(id==0)
+	return false;
+	db.erase(db.begin() + id);
+	return true;
+}
+
+int DataBase::find(std::string data2find)//ищет
+{
+	int i = 1;
+	while (i < db.size()) 
+	{
+		if ((db[i].pred == data2find) || (db[i].otr == data2find) || (db[i].date == data2find) || (db[i].nal == data2find) || (db[i].sum == data2find))
+			return i;
+	
+			i++;
+			
+	}
+	return 0;
 }
 
 bool DataBase::write2file()//блестяще
@@ -92,6 +125,30 @@ bool DataBase::write2file()//блестяще
 	}
 	QString str= str.fromStdString(sdb);
 	writeStream << str;
+	fout.close();
+	return true;
 }
 
-
+bool checkOtr(std::string otr)
+{
+	//FILE *ind; //("industry.txt");
+	//ind= fopen("industry.txt", "r");
+	std::ifstream ind;
+	ind.open("industry.txt", std::ifstream::in);
+	if (!ind.is_open())
+		return false;
+	std::string d;
+	getline(ind, d);
+	while (d != ".")
+	{
+		if (otr == d) 
+		{
+			ind.close();
+			return true;
+		}
+		getline(ind, d);	
+	
+	}
+	ind.close();
+	return false;
+}

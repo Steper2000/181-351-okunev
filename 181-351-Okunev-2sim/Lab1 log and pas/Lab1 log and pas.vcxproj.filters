@@ -14,6 +14,12 @@
     <ClCompile Include="classdb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="add.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="showDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Resource Files">
@@ -47,6 +53,12 @@
     <QtMoc Include="change.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="add.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="showDB.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Lab1logandpas.ui">
@@ -56,6 +68,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="change.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="add.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="showDB.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

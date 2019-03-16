@@ -26,16 +26,16 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *welcome;
     QPushButton *pushButton_nolog;
-    QPushButton *pushButton_change;
+    QPushButton *pushButton_add;
 
     void setupUi(QDialog *menu)
     {
         if (menu->objectName().isEmpty())
             menu->setObjectName(QString::fromUtf8("menu"));
-        menu->resize(394, 255);
+        menu->resize(438, 328);
         layoutWidget = new QWidget(menu);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(80, 50, 211, 131));
+        layoutWidget->setGeometry(QRect(80, 50, 271, 201));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -58,11 +58,10 @@ public:
 
         verticalLayout->addWidget(pushButton_nolog);
 
-        pushButton_change = new QPushButton(layoutWidget);
-        pushButton_change->setObjectName(QString::fromUtf8("pushButton_change"));
-        pushButton_change->setIconSize(QSize(20, 20));
+        pushButton_add = new QPushButton(layoutWidget);
+        pushButton_add->setObjectName(QString::fromUtf8("pushButton_add"));
 
-        verticalLayout->addWidget(pushButton_change);
+        verticalLayout->addWidget(pushButton_add);
 
 
         retranslateUi(menu);
@@ -73,9 +72,9 @@ public:
     void retranslateUi(QDialog *menu)
     {
         menu->setWindowTitle(QApplication::translate("menu", "menu", nullptr));
-        welcome->setText(QApplication::translate("menu", "Hello! What do you want to do?", nullptr));
+        welcome->setText(QApplication::translate("menu", "Hello, manager! What do you want to do?", nullptr));
         pushButton_nolog->setText(QApplication::translate("menu", "Show nolog info", nullptr));
-        pushButton_change->setText(QApplication::translate("menu", "Change database", nullptr));
+        pushButton_add->setText(QApplication::translate("menu", "Change database", nullptr));
     } // retranslateUi
 
 };

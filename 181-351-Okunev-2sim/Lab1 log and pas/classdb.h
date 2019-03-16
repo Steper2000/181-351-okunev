@@ -14,15 +14,16 @@ struct datas {
 	std::string sum;
 };
 
-bool checkPred(std::string pred);//Используемые символы - только буквы; Если регистр не тот, меняем на правильный.
+//bool checkPred(std::string pred);//Используемые символы - только буквы; Если регистр не тот, меняем на правильный.
 bool checkOtr(std::string otr);
-bool checkDate(std::string date);//тип данных Date
-bool checkNal(std::string nal);
-bool checkSum(std::string sum);
+//bool checkDate(std::string date);//тип данных Date
+//bool checkNal(std::string nal);
+//bool checkSum(std::string sum);
 
 class DataBase {
 
 public:
+	std::vector<datas> db; //* тут было
 	DataBase() {};//конструктор
 	//DataBase(std::string* tempDB); //конструктор по строке: т.е. по строке, в которой записана БД, формируем БД
 	~DataBase() {};//деструктор
@@ -34,21 +35,19 @@ public:
 	
 	void transformStr2BD(std::string sdb);// преобразует строку в БД
 	
-
-	/*
-	bool download()//загружаем данные из файла в строку
+	void download()//загружаем данные из файла в vector
 	{
 		std::string strFromFile;
-		open(FileName);
 		download(strFromFile);
-		close();
 		transformStr2BD(strFromFile);
-	}*/
+	}
 
-	//bool del_data(std::string id);//удалить запись с заданным id
+	bool del_data(int id);//удалить запись с заданным id
 
+	
+	int find(std::string data2find);//найти id
 //	template<typename T>
-//	std::vector<data> find(int criterior, T data2find);//найти запись с заданным id
+//std::vector<data> find(int criterior, T data2find);//найти запись с заданным id
 
 //	bool change(std::string id, data tempData)
 //	{
@@ -59,7 +58,10 @@ public:
 
 private:
 	std::string sdb;
-	std::vector<datas> db; //* тут было
+	//std::vector<datas> db; //* тут было
 	//QFile fin("database.txt");
 
 };
+
+
+

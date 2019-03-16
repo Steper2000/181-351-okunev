@@ -45,10 +45,10 @@ public:
     {
         if (change->objectName().isEmpty())
             change->setObjectName(QString::fromUtf8("change"));
-        change->resize(362, 255);
+        change->resize(479, 326);
         layoutWidget = new QWidget(change);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(60, 70, 251, 141));
+        layoutWidget->setGeometry(QRect(60, 70, 251, 176));
         verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);

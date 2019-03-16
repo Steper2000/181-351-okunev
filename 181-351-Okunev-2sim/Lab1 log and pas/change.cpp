@@ -7,7 +7,7 @@
 change::change(QWidget *parent)
 	: QDialog(parent)
 {
-	setupUi(this);
+	ui.setupUi(this);
 }
 
 change::~change()
@@ -61,9 +61,7 @@ public:
 		}
 			bool write();
 }*/
-void change::on_pushButton_change_clicked()
-{
-	/*
+/*
 	//FILE *b;
 	//b=fopen("database.txt", "w");
 	QFile b("database.txt");
@@ -75,5 +73,8 @@ void change::on_pushButton_change_clicked()
 		QString nlog = ui.line_Nlogin->text();
 		QString npass = ui.line_Npassword->text();
 	*/	
+void change::on_pushButton_change_clicked()
+{
+	
 		
 }

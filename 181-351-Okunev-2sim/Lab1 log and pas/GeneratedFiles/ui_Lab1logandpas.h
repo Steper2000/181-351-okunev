@@ -55,7 +55,7 @@ public:
     {
         if (Lab1logandpasClass->objectName().isEmpty())
             Lab1logandpasClass->setObjectName(QString::fromUtf8("Lab1logandpasClass"));
-        Lab1logandpasClass->resize(497, 356);
+        Lab1logandpasClass->resize(497, 360);
         actionClose = new QAction(Lab1logandpasClass);
         actionClose->setObjectName(QString::fromUtf8("actionClose"));
         actionAbout = new QAction(Lab1logandpasClass);
@@ -102,6 +102,7 @@ public:
 
         line_password = new QLineEdit(centralWidget);
         line_password->setObjectName(QString::fromUtf8("line_password"));
+        line_password->setEchoMode(QLineEdit::Password);
 
         horizontalLayout_2->addWidget(line_password);
 

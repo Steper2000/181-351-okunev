@@ -1,3 +1,7 @@
-﻿  classdb.cpp
-c:\181-351-okunev\181-351-okunev-2sim\lab1 log and pas\classdb.cpp(95): warning C4715: DataBase::write2file: значение возвращается не при всех путях выполнения
+﻿  moc_showDB.cpp
+  Lab1logandpas.cpp
+  add.cpp
+  classdb.cpp
+  menu.cpp
+  showDB.cpp
   Lab1 log and pas.vcxproj -> C:\181-351-okunev\181-351-Okunev-2sim\x64\Debug\Lab1 log and pas.exe

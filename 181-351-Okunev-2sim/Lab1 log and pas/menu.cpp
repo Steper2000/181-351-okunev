@@ -4,6 +4,8 @@
 #include "change.h"
 #include <string>
 #include <fstream>
+#include "add.h"
+#include "showDB.h"
 
 menu::menu(QWidget *parent)
 	: QDialog(parent)
@@ -27,7 +29,18 @@ void menu::on_pushButton_change_clicked()
 
 void menu:: on_pushButton_nolog_clicked()
 {
-	QMessageBox b;
-	b.setText("now it's not ready :(");
-	b.exec();
+	showDB d;
+	d.setModal(true);
+	d.exec();
+	//QMessageBox b;
+	//b.setText("now it's not ready :(");
+	//b.exec();
+}
+
+void menu::on_pushButton_add_clicked()
+{
+	add c;
+	c.setModal(true);
+	c.exec();
+
 }
