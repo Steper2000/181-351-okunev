@@ -1,0 +1,10 @@
+COMPANY	INDUSTRY	DATE	TAX	SUM
+FACE	rap	9.02.2002	rich	66666
+Kirusha	flex	11.03.2019	genius	500
+DK	rock	14.03.2019	nolog	20
+Steper	rap	15.03.2019	w	228
+Moxem	bi	16.03.2019	salto	300
+aaa	bi	21.12.1212	w	444
+aaa	rap	21.12.1212	w	444
+aaa	rap	14.04.1198	w	443
+aaa	rap	12.12.1212	rich	228

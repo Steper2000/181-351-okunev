@@ -1,0 +1,9 @@
+COMPANY	INDUSTRY	DATE	TAX	SUM
+33	sale	e67	r2	ffff
+qqqqq	bank	e	r	t
+face	rap	2.02.2002	rich	66666
+kirusha	flex	11.03.2019	genius	brain
+DK	rock	14.03.2019	nolog	20
+test	sale	hhh	ll	U
+Steper	rap	w	w	w
+ddd	flex	ulu	qgft	aaaaa
